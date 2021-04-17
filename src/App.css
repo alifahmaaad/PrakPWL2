@@ -1,10 +1,33 @@
 .App {
   text-align: center;
 }
+.Box {
+  column-count: 2;
+  column-gap: 4px;
+  padding: 20px;
+  margin: 40px;
+  border-color: gray;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 20px;
+  width: 60%;
+}
+h2 {
+  padding-top: 15px;
+}
+div {
+  margin: 20px;
+}
+.Box_content {
+  font-size: 16px;
+  text-align: center;
+}
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: 180px;
+  width: 250px;
+  display: block;
+  margin: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
