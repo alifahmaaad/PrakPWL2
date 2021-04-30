@@ -13,7 +13,8 @@ class DataScrapping extends Component {
 
   async componentDidMount() {
    
-    const html3 = await axios.get('https://cors-anywhere.herokuapp.com/https://sport.detik.com/');
+    const html3 = await axios.get("https://cors-anywhere.herokuapp.com/https://sport.detik.com/"
+                                 );
     const $2 = await cheerio.load(html3.data);
     let datas = []
     $2('.m_content > ul > li > article').each((i, element) => {
