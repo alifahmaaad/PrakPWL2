@@ -47,7 +47,7 @@ class DataScrapping extends Component {
     const html4 = await axios.get('https://cors-anywhere.herokuapp.com/https://www.panditfootball.com/');
     const $3 = await cheerio.load(html4.data);
 
-    $3(("article.news-block.small-block").each((i, element) => {
+    $3("article.news-block.small-block").each((i, element) => {
       if (i < 10) {
         datas.push({
           title: $3(element).find('h3.news-title > a').text().trim(),
