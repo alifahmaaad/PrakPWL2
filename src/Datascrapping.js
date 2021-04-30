@@ -12,7 +12,7 @@ class DataScrapping extends Component {
   state = { datas: [] };
 
   async componentDidMount() {
-   
+   let datas = [];
    const htmlDetik = await axios.get("https://cors-anywhere.herokuapp.com/https://sport.detik.com/");
     const $detik = await cheerio.load(htmlDetik.data);
     let jDetikCom = 0;
