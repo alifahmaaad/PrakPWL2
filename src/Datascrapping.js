@@ -90,7 +90,7 @@ class DataScrapping extends Component {
             <div className='Box' style={divStyle} >
               <img className='App-logo' src={data.image}/>
               <h2>{data.title}  </h2>
-              <p>Upload Date : {data.date} <br/> sumber : {data.src}</p>
+              <p>Upload Date : {data.date} <br/> sumber : {data.source}</p>
             </div>
           </div>
           )}
