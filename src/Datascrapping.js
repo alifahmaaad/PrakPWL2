@@ -45,7 +45,7 @@ class DataScrapping extends Component {
     let jDetikCom = 0;
     $detik("div.m_content > ul > li > article").each((i, element) => {
       let kategori = $detik(element).find("div.desc_nhl > a").attr("href").substr(24, 9);
-      if (kategori == "sepakbola" && jDetikCom <= 15) {
+      if (kategori === "sepakbola" && jDetikCom <= 15) {
         data.push({
           title: $detik(element).find("div.desc_nhl > a > h2").text().trim(),
           image: $detik(element).find("img").attr("src"),
@@ -65,8 +65,8 @@ class DataScrapping extends Component {
       let kategori = $bolacom(element).find("aside > header > a.articles--iridescent-list--text-item__category").text().trim();
       let judulFoto = $bolacom(element).find("aside > header > h4").text().trim().substr(0, 5);
       let judulVideo = $bolacom(element).find("aside > header > h4").text().trim().substr(0, 6);
-      if (jBolaCom <= 15 && kategori != "E-sports" && kategori != "MotoGP" && kategori != "NBA") {
-        if (judulFoto != "FOTO:" && judulVideo != "VIDEO:") {
+      if (jBolaCom <= 15 && kategori !== "E-sports" && kategori !== "MotoGP" && kategori !== "NBA") {
+        if (judulFoto !== "FOTO:" && judulVideo !== "VIDEO:") {
           data.push({
             title: $bolacom(element).find("aside > header > h4").text().trim(),
             image: $bolacom(element).find("figure > a > picture > img").attr("data-src"),
