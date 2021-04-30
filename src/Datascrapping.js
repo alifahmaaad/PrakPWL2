@@ -86,7 +86,7 @@ class DataScrapping extends Component {
       <div>
    
         <ul>
-          {this.state.datas.map((data,i) => <div key={i}>
+          {this.state.data.map((data,i) => <div key={i}>
             <div className='Box' style={divStyle} >
               <img className='App-logo' src={data.image}/>
               <h2>{data.title}  </h2>
