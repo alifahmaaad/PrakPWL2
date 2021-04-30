@@ -3,6 +3,11 @@ import cheerio from "cheerio";
 import axios from "axios";
 import "./App.css";
 
+const divStyle = {
+  color: 'black',
+  margin: 'auto'
+};
+
 class DataScrapping extends Component {
   state = { data: [] };
 
