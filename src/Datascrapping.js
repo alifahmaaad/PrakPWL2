@@ -3,7 +3,7 @@ import cheerio from "cheerio";
 import axios from "axios";
 import "./App.css";
 
-class Scraping extends Component {
+class DataScrapping extends Component {
   state = { data: [] };
 
   async componentDidMount() {
