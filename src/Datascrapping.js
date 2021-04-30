@@ -13,18 +13,20 @@ class DataScrapping extends Component {
 
   async componentDidMount() {
    
-    const html3 = await axios.get("https://cors-anywhere.herokuapp.com/https://sport.detik.com/"
-                                 );
-    const $2 = await cheerio.load(html3.data);
-    let datas = []
-    $2('.m_content > ul > li > article').each((i, element) => {
-      if (i < 10) {
+   const htmlDetik = await axios.get("https://cors-anywhere.herokuapp.com/https://sport.detik.com/");
+    const $detik = await cheerio.load(htmlDetik.data);
+    let jDetikCom = 0;
+    $detik("div.m_content > ul > li > article").each((i, element) => {
+      let kategori = $detik(element).find("div.desc_nhl > a").attr("href").substr(24, 9);
+      if (kategori == "sepakbola" && jDetikCom <= 15) {
         datas.push({
-          title: $2(element).find('.desc_nhl > a > h2').text().trim(),
-          image : $2(element).find('img').attr('src'),
-          date: $2(element).find('span.labdate').text().replace("detikSport", "").replace("|", "").trim(),
-          src : "sport.detik.com"
-        })
+          title: $detik(element).find("div.desc_nhl > a > h2").text().trim(),
+          image: $detik(element).find("img").attr("src"),
+          date: $detik(element).find("div.desc_nhl > span.labdate").text().replace("detikSport", "").replace("|", "").trim(),
+          source: "https://sport.detik.com",
+          link: $detik(element).find("div.desc_nhl > a").attr("href").trim(),
+        });
+        jDetikCom++;
       }
     });
     this.setState({ datas });
@@ -45,12 +47,12 @@ class DataScrapping extends Component {
     const html4 = await axios.get('https://cors-anywhere.herokuapp.com/https://www.panditfootball.com/');
     const $3 = await cheerio.load(html4.data);
 
-    $3('.main-content > .row >.col-md-4').each((i, element) => {
+    $3(("article.news-block.small-block").each((i, element) => {
       if (i < 10) {
         datas.push({
-          title: $3(element).find('.news-title').text().trim(),
-          image : $3(element).find('.image-overlay > img').attr('src'),
-          date: $3(element).find('.news-details > p').text().trim(),
+          title: $3(element).find('h3.news-title > a').text().trim(),
+          image : $3(element).find('a.overlay-link > figure.image-overlay > img').attr('src'),
+          date: $3(element).find('p.simple-share').text().trim(),
           src : "panditfootball.com"
         })
       }
